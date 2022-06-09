@@ -11,7 +11,41 @@ function App() {
   // alienSize should be a number that starts out as 10
   const [alienSize, setAlienSize] = useState(10);
   // traffic is complicated. It should be an array of strings that starts out as ['car', 'truck']
+  const [vehicles, setVehicles] = useState (['car', 'truck', 'bus', 'motorcycle']);
+  
+  // handleCar function needs to .push the array onto state
+  // and setState to .slice() state which resets the array
 
+  function handleCar() {
+    vehicles.push('car');
+
+    setVehicles(vehicles.slice());
+  }
+
+
+  function handleBus() {
+    vehicles.push('bus');
+
+    setVehicles(vehicles.slice());
+  }
+
+  function handleTruck() {
+    vehicles.push('truck');
+
+    setVehicles(vehicles.slice());
+  }
+
+  function handleMotorcycle() {
+    vehicles.push('motorcycle');
+
+    setVehicles(vehicles.slice());
+  }
+
+  function handleGarage() {
+    vehicles.pop();
+
+    setVehicles(vehicles.slice());
+  }
   return (
     <div className="App">
       <div className="fight">
@@ -50,17 +84,18 @@ function App() {
       This prop should be an array of strings like ['car', 'truck', 'truck', 'car', 'bus'].
       Do you have something like that in state that you could pass as a vehicles prop? 
       */}
-      <VehicleList />
+      <VehicleList vehicles={vehicles}/>
       <div className='buttons'>
         {/* This part is weird */}
         {/* On click, you should set the traffic in state to be a copy of the same array that's already in state, but immutably add a 'car' to the end */}
-        <button>Car</button>
+        <button onClick = {handleCar}>Car</button>
         {/* On click, you should set the traffic in state to be a copy of the same array that's already in state, but immutably add a 'bus' to the end */}
-        <button>Bus</button>
+        <button onClick = {handleBus}>Bus</button>
         {/* On click, you should set the traffic in state to be a copy of the same array that's already in state, but immutably add a 'truck' to the end */}
-        <button>Truck</button>
+        <button onClick = {handleTruck}>Truck</button>
         {/* On click, you should set the traffic in state to be a copy of the same array that's already in state, but immutably add a 'motorcycle' to the end */}
-        <button>Motorcycle</button>
+        <button onClick = {handleMotorcycle}>Motorcycle</button>
+        <button onClick = {handleGarage}>Return to garage</button>
       </div>
 
     </div>
